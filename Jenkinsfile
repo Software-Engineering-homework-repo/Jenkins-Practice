@@ -28,6 +28,7 @@ pipeline {
             }
         }
 
+        // Compile all Java sources under Test2/src into classes/
         stage('Build') {
             steps {
                 sh '''
