@@ -86,7 +86,7 @@ Job: ${env.JOB_NAME}
 Build: #${env.BUILD_NUMBER}
 URL: ${env.BUILD_URL}
 """,
-                to: 'ghwo336@gmail.com'
+                to: 'ghwo336@gmail.com, yujun1123@g.hongik.ac.kr'
             )
         }
 
@@ -101,7 +101,7 @@ Job: ${env.JOB_NAME}
 Build: #${env.BUILD_NUMBER}
 URL: ${env.BUILD_URL}
 """,
-                to: 'ghwo336@gmail.com'
+                to: 'ghwo336@gmail.com, yujun1123@g.hongik.ac.kr'
             )
         }
     }
