@@ -56,8 +56,6 @@ pipeline {
             }
         }
 
-        // ===== Docker 가산점 stage =====
-        // 사전: Jenkins 컨테이너 안에 docker CLI 설치되어 있어야 함 (실행가이드 STEP 11 참고)
         stage('Docker Build') {
             steps {
                 sh '''
@@ -77,28 +75,34 @@ pipeline {
             archiveArtifacts artifacts: "${REPORT_DIR}/**/*", allowEmptyArchive: true
         }
 
-        // ===== 이메일 알림 (SMTP 설정 완료 후 TODO 풀기) =====
-        // success {
-        //     emailext (
-        //         subject: "[Jenkins] SUCCESS: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
-        //         body: "빌드 성공!\n${env.BUILD_URL}",
-        //         to: '본인이메일@gmail.com'
-        //     )
-        // }
-        // failure {
-        //     emailext (
-        //         subject: "[Jenkins] FAIL: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
-        //         body: "빌드 실패!\n${env.BUILD_URL}",
-        //         to: '본인이메일@gmail.com'
-        //     )
-        // }
+        success {
+            echo "Build and test succeeded!"
+            emailext (
+                subject: "[Jenkins] SUCCESS: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+                body: """\
+빌드 성공!
+
+Job: ${env.JOB_NAME}
+Build: #${env.BUILD_NUMBER}
+URL: ${env.BUILD_URL}
+""",
+                to: 'ghwo336@gmail.com'
+            )
+        }
 
         failure {
             echo "Build or test failed!"
-        }
+            emailext (
+                subject: "[Jenkins] FAIL: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+                body: """\
+빌드 실패!
 
-        success {
-            echo "Build and test succeeded!"
+Job: ${env.JOB_NAME}
+Build: #${env.BUILD_NUMBER}
+URL: ${env.BUILD_URL}
+""",
+                to: 'ghwo336@gmail.com'
+            )
         }
     }
 }
