@@ -1,0 +1,15 @@
+.git
+.gitignore
+.idea
+*.iml
+.vscode
+.classpath
+.project
+.settings
+test-reports/
+classes/
+lib/
+.env
+*.log
+.DS_Store
+docs/screenshots/

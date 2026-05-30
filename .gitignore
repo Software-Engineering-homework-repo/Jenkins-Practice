@@ -1,0 +1,26 @@
+# Build artifacts
+classes/
+lib/
+*.class
+test-reports/
+target/
+build/
+
+# IDE
+.idea/
+*.iml
+.vscode/
+.classpath
+.project
+.settings/
+bin/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Secrets
+.env
+*.log
+*.pem
+*.key
