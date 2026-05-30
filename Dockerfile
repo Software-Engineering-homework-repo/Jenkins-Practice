@@ -1,6 +1,7 @@
 # Stage 1: build & test
 FROM eclipse-temurin:17-jdk AS builder
 WORKDIR /app
+LABEL maintainer="taewoo" stage="builder"
 
 # JUnit 다운로드
 RUN mkdir -p lib && \
