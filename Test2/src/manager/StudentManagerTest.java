@@ -1,4 +1,4 @@
-package student;
+package manage;
 
 import static org.junit.jupiter.api.Assertions.*;
 
