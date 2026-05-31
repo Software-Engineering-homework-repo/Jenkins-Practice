@@ -1,49 +1,55 @@
-package manager;
+package student;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-public class StudentManagerTest {
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.Order;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 
-    private StudentManager sm;
+// @Order 번호 순서대로 테스트를 실행하도록 지정
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+class StudentManagerTest {
 
-    @BeforeEach
-    void setUp() {
-        sm = new StudentManager();
+    private static StudentManager manager;
+
+    @BeforeAll
+    static void setUp() {
+        manager = new StudentManager();
+    }
+    
+    
+    @Test
+    @Order(1)
+    void testAddStudent() {
+        manager.addStudent("이호재");
+        assertTrue(manager.hasStudent("이호재"));
     }
 
+    // 2. 중복 추가 예외 처리 
     @Test
-    void addStudent() {
-        sm.add("Alice");
-        assertTrue(sm.contains("Alice"));
-        assertEquals(1, sm.size());
+    @Order(2)
+    void testAddDuplicateStudent() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            manager.addStudent("이호재");
+        });
     }
 
+    // 3. 학생 제거
     @Test
-    void removeStudent() {
-        sm.add("Bob");
-        sm.remove("Bob");
-        assertFalse(sm.contains("Bob"));
-        assertEquals(0, sm.size());
+    @Order(3)
+    void testRemoveStudent() {
+        manager.removeStudent("이호재");
+        assertFalse(manager.hasStudent("이호재"));
     }
 
+    // 4. 존재하지 않는 학생 제거 예외 처리
     @Test
-    void duplicateAddThrows() {
-        sm.add("Carol");
-        assertThrows(IllegalArgumentException.class, () -> sm.add("Carol"));
-    }
-
-    @Test
-    void removeMissingThrows() {
-        assertThrows(IllegalArgumentException.class, () -> sm.remove("Ghost"));
-    }
-
-    @Test
-    void multipleAddSize() {
-        sm.add("A");
-        sm.add("B");
-        sm.add("C");
-        assertEquals(3, sm.size());
+    @Order(4)
+    void testRemoveNonexistentStudent() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            manager.removeStudent("이호재");
+        });
     }
 }
