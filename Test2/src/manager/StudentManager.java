@@ -7,6 +7,7 @@ public class StudentManager {
     private final Set<String> students = new HashSet<>();
 
     public void add(String name) {
+          /** Manages student names with add/remove and duplicate-check. */
         if (students.contains(name)) {
             throw new IllegalArgumentException("Duplicate student: " + name);
         }
