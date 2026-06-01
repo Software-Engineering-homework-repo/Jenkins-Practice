@@ -6,13 +6,13 @@ Java(JUnit5) + Jenkins(Docker) + GitHub Webhook + Docker 가산점
 
 ## 팀원 역할 분담
 
-| 팀원 | 역할 | 담당 작업 |
-|------|------|----------|
-| **이호재** (팀장) | 인프라 · 통합 | Docker Compose 구성, Jenkins 환경 셋업, ngrok 터널링, GitHub Webhook 연동, 전체 아키텍처 설계 |
-| **이주희** | Java · 단위테스트 | `StudentManager` 클래스 구현, JUnit5 테스트 케이스 5종 작성 (추가/제거/중복예외/존재예외/다중추가) |
-| **이태경** | Jenkins Pipeline | `Jenkinsfile` 작성 (Checkout / Prepare / Build / Test / Post-Action stage), JUnit 결과 archive 설정 |
-| **김태우** | Docker (가산점) | 멀티스테이지 `Dockerfile` 작성, `.dockerignore` 구성, Jenkins Pipeline에 Docker Build stage 추가 |
-| **오유준** | 알림 · 검증 | Gmail SMTP 연동, `emailext` 빌드 결과 알림 구성, 의도적 실패 → 분석 → 수정 시연 |
+| 팀원              | 역할              | 담당 작업                                                                                           |
+| ----------------- | ----------------- | --------------------------------------------------------------------------------------------------- |
+| **이호재** (팀장) | 인프라 · 통합     | Docker Compose 구성, Jenkins 환경 셋업, ngrok 터널링, GitHub Webhook 연동, 전체 아키텍처 설계       |
+| **이주희**        | Java · 단위테스트 | `StudentManager` 클래스 구현, JUnit5 테스트 케이스 5종 작성 (추가/제거/중복예외/존재예외/다중추가)  |
+| **이태경**        | Jenkins Pipeline  | `Jenkinsfile` 작성 (Checkout / Prepare / Build / Test / Post-Action stage), JUnit 결과 archive 설정 |
+| **김태우**        | Docker (가산점)   | 멀티스테이지 `Dockerfile` 작성, `.dockerignore` 구성, Jenkins Pipeline에 Docker Build stage 추가    |
+| **오유준**        | 알림 · 검증       | Gmail SMTP 연동, `emailext` 빌드 결과 알림 구성, 의도적 실패 → 분석 → 수정 시연                     |
 
 협업 흐름: 각 팀원이 본인 담당 영역을 EGit/GitHub으로 **Clone → Branch → Commit → Push → Pull Request → Merge** 순서로 진행. 각 PR마다 Jenkins가 자동으로 빌드/테스트 수행.
 
@@ -101,11 +101,15 @@ docker run --rm student-manager:latest
 
 ## 요구사항 충족
 
-| # | 요구사항 | 충족 방식 |
-|---|---------|----------|
-| ① | 팀장이 GitHub Repository 생성 | 본 레포 |
-| ② | EGit으로 Clone/Commit/Push/PR/Merge 협업 | 팀원 5명 각자 PR + 머지 이력 |
-| ③ | Push 시 Jenkins 자동 빌드 | Webhook + Pipeline Item 동작 확인 |
-| ④ | 빌드 실패 시 원인 분석 및 수정 | 의도적 실패 커밋 → 분석 → 수정 커밋 |
-| ⑤ | 빌드 성공 시 txt 저장 or 이메일 | `test-output.txt` archive + Gmail 알림 |
-| ★ | (가산점) Docker 활용 | Docker Compose 인프라 + 앱 멀티스테이지 빌드 |
+| #   | 요구사항                                 | 충족 방식                                    |
+| --- | ---------------------------------------- | -------------------------------------------- |
+| ①   | 팀장이 GitHub Repository 생성            | 본 레포                                      |
+| ②   | EGit으로 Clone/Commit/Push/PR/Merge 협업 | 팀원 5명 각자 PR + 머지 이력                 |
+| ③   | Push 시 Jenkins 자동 빌드                | Webhook + Pipeline Item 동작 확인            |
+| ④   | 빌드 실패 시 원인 분석 및 수정           | 의도적 실패 커밋 → 분석 → 수정 커밋          |
+| ⑤   | 빌드 성공 시 txt 저장 or 이메일          | `test-output.txt` archive + Gmail 알림       |
+| ★   | (가산점) Docker 활용                     | Docker Compose 인프라 + 앱 멀티스테이지 빌드 |
+
+// demo 2026년 6월 1일 월요일 15시 13분 19초 KST
+
+dkdks
