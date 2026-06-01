@@ -6,22 +6,21 @@ import java.util.Set;
 public class StudentManager {
     private final Set<String> students = new HashSet<>();
 
-    public void add(String name) {
-          /** Manages student names with add/remove and duplicate-check. */
+    public void addStudent(String name) {
         if (students.contains(name)) {
             throw new IllegalArgumentException("Duplicate student: " + name);
         }
         students.add(name);
     }
 
-    public void remove(String name) {
+    public void removeStudent(String name) {
         if (!students.contains(name)) {
             throw new IllegalArgumentException("Student not found: " + name);
         }
         students.remove(name);
     }
 
-    public boolean contains(String name) {
+    public boolean hasStudent(String name) {
         return students.contains(name);
     }
 
