@@ -1,6 +1,7 @@
 pipeline {
     agent any
 
+    //hihi
     environment {
         JUNIT_JAR_URL = 'https://repo1.maven.org/maven2/org/junit/platform/junit-platform-console-standalone/1.7.1/junit-platform-console-standalone-1.7.1.jar'
         JUNIT_JAR_PATH = 'lib/junit.jar'
